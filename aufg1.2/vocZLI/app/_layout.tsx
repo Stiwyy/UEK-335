@@ -48,6 +48,20 @@ export default function RootLayout() {
                         presentation: "modal",
                     }}
                 />
+                <Stack.Screen
+                    name="sensorDebug"
+                    options={{
+                        title: "Accelerometer",
+                        presentation: "modal",
+                    }}
+                />
+                <Stack.Screen
+                    name="pushupCounter"
+                    options={{
+                        title: "Pushup Counter",
+                        presentation: "modal",
+                    }}
+                />
             </Stack>
         </VociProvider>
     );

@@ -56,6 +56,18 @@ export default function Index() {
             >
                 <Ionicons name="play" size={24} color="#fff" />
             </Pressable>
+            <Pressable
+                style={styles.button2}
+                onPress={() => router.push("/sensorDebug")}
+            >
+                <Ionicons name="apps" size={24} color="#fff" />
+            </Pressable>
+            <Pressable
+                style={styles.button3}
+                onPress={() => router.push("/pushupCounter")}
+            >
+                <Ionicons name="accessibility" size={24} color="#fff" />
+            </Pressable>
         </View>
     );
 }
@@ -85,5 +97,36 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 8,
         elevation: 10,
+    },
+    button2: {
+        position: "absolute",
+        bottom: 30,
+        left: 30,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 10,
+        backgroundColor: "orange",
+    },
+    button3: {
+        position: "absolute",
+        bottom: 30,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 10,
+        backgroundColor: "orange",
     },
 });
