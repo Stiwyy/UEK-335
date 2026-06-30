@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-    Text,
-    View,
-    StyleSheet,
-    TouchableOpacity,
-    SafeAreaView,
-} from "react-native";
+import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView, Image} from "react-native";
 import Animated, {
     FadeIn,
     FadeOut,
@@ -39,7 +33,6 @@ export default function Learn() {
 
         setIsAnimating(true);
 
-        // Warten bis Exit-Animation fertig ist
         setTimeout(() => {
             setCurrentIndex((prev) => prev + 1);
             setShowTranslation(false);
@@ -79,6 +72,14 @@ export default function Learn() {
                 style={styles.card}
             >
                 <Text style={styles.term}>{currentVoci.term}</Text>
+
+                {currentVoci.imageUri && (
+                    <Image
+                        source={{ uri: currentVoci.imageUri }}
+                        style={styles.image}
+                        resizeMode="cover"
+                    />
+                )}
 
                 {showTranslation && (
                     <Animated.Text
@@ -227,5 +228,11 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize: 17,
         fontWeight: "600",
+    },
+    image: {
+        width: "100%",
+        height: 200,
+        borderRadius: 14,
+        marginTop: 15,
     },
 });

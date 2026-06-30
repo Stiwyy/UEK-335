@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {View, TextInput, Button, Alert, StyleSheet} from "react-native";
 import Voci from "@/models/voci";
+import ImagePickerButton from "@/components/ImagePickerButton";
 
 interface VociDetailProps {
     initialVoci?: Voci;
@@ -12,7 +13,7 @@ interface VociDetailProps {
 export default function VociDetail({initialVoci, onSave, onDelete, onCancel }: VociDetailProps) {
     const [term, setTerm] = useState(initialVoci?.term ?? "");
     const [translation, setTranslation] = useState(initialVoci?.translation ?? "");
-    const [imageUri, setImageUri] = useState(initialVoci?.imageUri ?? "");
+    const [imageUri, setImageUri] = useState(initialVoci?.imageUri);
 
     const handleSave = () => {
         if (!term.trim() || !translation.trim()) {
@@ -26,7 +27,7 @@ export default function VociDetail({initialVoci, onSave, onDelete, onCancel }: V
         const newVoci: Voci = {
             term: term.trim(),
             translation: translation.trim(),
-            imageUri: imageUri.trim()
+            imageUri: imageUri || undefined,
         };
 
         onSave(newVoci);
@@ -38,6 +39,7 @@ export default function VociDetail({initialVoci, onSave, onDelete, onCancel }: V
 
     return (
         <View style={styles.container}>
+            <ImagePickerButton imageUrl={imageUri} onImageSelected={setImageUri} />
             <TextInput
                 style={styles.input}
                 placeholder="Term"
@@ -50,12 +52,6 @@ export default function VociDetail({initialVoci, onSave, onDelete, onCancel }: V
                 placeholder="Translation"
                 value={translation}
                 onChangeText={setTranslation}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Image Uri (optional)"
-                value={imageUri}
-                onChangeText={setImageUri}
             />
 
             <Button title="Speichern" onPress={handleSave} />

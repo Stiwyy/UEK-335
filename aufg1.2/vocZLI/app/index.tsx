@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, FlatList, Pressable } from "react-native";
+import { Text, View, StyleSheet, FlatList, Pressable, ActivityIndicator, } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 import { useVoci } from "@/context/vociContext";
@@ -6,7 +6,15 @@ import VociItem from "@/components/VociItem";
 
 export default function Index() {
     const router = useRouter();
-    const { vociList } = useVoci();
+    const { vociList, isLoading } = useVoci();
+    if (isLoading) {
+        return (
+            <View style={styles.container}>
+                <ActivityIndicator size="large" color="green" />
+            </View>
+        );
+    }
+
 
     return (
         <View style={styles.container}>

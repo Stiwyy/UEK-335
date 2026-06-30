@@ -7,10 +7,10 @@ export default function AddVociScreen() {
     const router = useRouter();
     const { addVoci } = useVoci();
 
-    const handleAdd = (newVoci: Voci) => {
+    const handleSave = (newVoci: Voci) => {
         addVoci(newVoci);
         router.back();
     };
 
-    return <VociDetail onSave={handleAdd} />;
+    return <VociDetail onSave={handleSave} />;
 }
